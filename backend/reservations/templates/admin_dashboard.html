@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Dashboard Tabook</h1>
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="card text-white bg-primary mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Tavoli Totali</h5>
+                        <p class="card-text">{{ total_tables }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-white bg-success mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Tavoli Prenotati</h5>
+                        <p class="card-text">{{ booked_tables }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-white bg-warning mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Tavoli Disponibili</h5>
+                        <p class="card-text">{{ available_tables }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h2 class="mt-4">Elenco Prenotazioni</h2>
+        <table class="table table-striped mt-3">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Data</th>
+                    <th>Orario</th>
+                    <th>Persone</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reservation in reservations %}
+                <tr>
+                    <td>{{ reservation.name }}</td>
+                    <td>{{ reservation.email }}</td>
+                    <td>{{ reservation.date }}</td>
+                    <td>{{ reservation.time }}</td>
+                    <td>{{ reservation.num_people }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

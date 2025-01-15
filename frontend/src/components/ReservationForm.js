@@ -22,7 +22,7 @@ const ReservationForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("http://127.0.0.1:8000/api/reservations/", formData);
+            await axios.post("http://127.0.0.1:8000/api/reservations/", formData);
             setSuccessMessage("Prenotazione effettuata con successo!");
             setFormData({
                 name: "",
@@ -38,7 +38,7 @@ const ReservationForm = () => {
 
     return (
         <div className="container mt-5">
-            <h2>Prenota un Tavolo</h2>
+            <h2 className="text-center mb-4">Prenota un Tavolo</h2>
             {successMessage && <div className="alert alert-success">{successMessage}</div>}
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
@@ -50,6 +50,7 @@ const ReservationForm = () => {
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
+                        placeholder="Inserisci il tuo nome"
                         required
                     />
                 </div>
@@ -62,32 +63,35 @@ const ReservationForm = () => {
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
+                        placeholder="Inserisci la tua email"
                         required
                     />
                 </div>
-                <div className="mb-3">
-                    <label htmlFor="date" className="form-label">Data</label>
-                    <input
-                        type="date"
-                        className="form-control"
-                        id="date"
-                        name="date"
-                        value={formData.date}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="time" className="form-label">Orario</label>
-                    <input
-                        type="time"
-                        className="form-control"
-                        id="time"
-                        name="time"
-                        value={formData.time}
-                        onChange={handleChange}
-                        required
-                    />
+                <div className="row">
+                    <div className="col-md-6 mb-3">
+                        <label htmlFor="date" className="form-label">Data</label>
+                        <input
+                            type="date"
+                            className="form-control"
+                            id="date"
+                            name="date"
+                            value={formData.date}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    <div className="col-md-6 mb-3">
+                        <label htmlFor="time" className="form-label">Orario</label>
+                        <input
+                            type="time"
+                            className="form-control"
+                            id="time"
+                            name="time"
+                            value={formData.time}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="num_people" className="form-label">Numero di Persone</label>
@@ -99,10 +103,11 @@ const ReservationForm = () => {
                         value={formData.num_people}
                         onChange={handleChange}
                         min="1"
+                        placeholder="Quante persone?"
                         required
                     />
                 </div>
-                <button type="submit" className="btn btn-primary">Invia Prenotazione</button>
+                <button type="submit" className="btn btn-primary w-100">Invia Prenotazione</button>
             </form>
         </div>
     );
