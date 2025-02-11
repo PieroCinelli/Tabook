@@ -1,0 +1,19 @@
+<!-- templates/email_confirmation.html -->
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Conferma Prenotazione</title>
+</head>
+<body>
+    <h1>Ciao {{ reservation.name }},</h1>
+    <p>La tua prenotazione è stata confermata. Ecco i dettagli:</p>
+    <ul>
+        <li><strong>Data:</strong> {{ reservation.date }}</li>
+        <li><strong>Orario:</strong> {{ reservation.time }}</li>
+        <li><strong>Numero di persone:</strong> {{ reservation.num_people }}</li>
+    </ul>
+    <p>Puoi <a href="{{ edit_url }}">modificare</a> o <a href="{{ cancel_url }}">cancellare</a> la tua prenotazione.</p>
+    <p>Grazie per aver scelto Tabook!</p>
+</body>
+</html>

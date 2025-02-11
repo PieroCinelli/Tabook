@@ -17,14 +17,24 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from reservations.views import ReservationViewSet, admin_dashboard
+from reservations.views import (
+    ReservationViewSet,
+    admin_dashboard,
+    confirm_reservation,
+    reset_reservations,
+    delete_reservation,  # Importa la funzione per eliminare le prenotazioni
+)
 
-
+# Configura il router per l'API REST
 router = DefaultRouter()
 router.register(r'reservations', ReservationViewSet, basename='reservation')
 
+# Definizione degli URL
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('admin-dashboard/', admin_dashboard, name='admin_dashboard'),
-    path('api/', include(router.urls)),
+    path('admin/', admin.site.urls),  # Accesso al pannello di amministrazione Django
+    path('admin-dashboard/', admin_dashboard, name='admin_dashboard'),  # URL per la dashboard dell'admin
+    path('api/confirm-reservation/<int:reservation_id>/', confirm_reservation, name='confirm_reservation'),  # URL per confermare una prenotazione
+    path('api/', include(router.urls)),  # Include gli endpoint dell'API REST
+    path('api/reset-reservations/', reset_reservations, name='reset_reservations'),
+    path('api/delete-reservation/<int:pk>/', delete_reservation, name='delete_reservation'),  # Endpoint per eliminare una prenotazione
 ]

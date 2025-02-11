@@ -9,6 +9,14 @@ h1 {
   color: #000000;
 }
 
+.logo {
+  width: 170px; /* Dimensione personalizzabile */
+  height: auto;
+  margin: 0 auto;
+  margin-top: 2rem;
+  display: block;
+}
+
 .container {
   max-width: 600px;
   margin: 0 auto;

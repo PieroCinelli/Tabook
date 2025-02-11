@@ -1,0 +1,22 @@
+<form method="POST" action="{% url 'check_reservation_limit' %}">
+    {% csrf_token %}
+    <label for="name">Nome</label>
+    <input type="text" name="name" required>
+    
+    <label for="phone_number">Numero di telefono</label>
+    <input type="text" name="phone_number" required>
+    
+    <label for="date">Data</label>
+    <input type="date" name="date" required>
+    
+    <label for="time">Orario</label>
+    <input type="time" name="time" required>
+    
+    <label for="num_people">Numero di persone</label>
+    <input type="number" name="num_people" required>
+
+    <label for="group_id">ID del Gruppo (opzionale)</label>
+    <input type="text" name="group_id">
+    
+    <button type="submit">Prenota</button>
+</form>
